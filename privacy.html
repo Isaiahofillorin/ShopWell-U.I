@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Privacy Policy</title>
+<style>
+    /* General Styling */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #111, #333);
+        color: white;
+        overflow-x: hidden;
+    }
+
+    /* Preloader Styling */
+    .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .spinner-container {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        }
+
+        .spinner-container img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        }
+
+        .spinner {
+        width: 100%;
+        height: 100%;
+        border: 5px solid #ccc;
+        border-top: 5px solid gold;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+        }
+
+    /* Page Container */
+    .container {
+        width: 70%;
+        margin: 50px auto;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px gold;
+        z-index: 2;
+    }
+
+    /* Heading Styling */
+    h1 {
+        font-size: 40px;
+        text-align: center;
+        color: #00ff64;
+        text-shadow: 0 0 10px #00ff64, 0 0 30px #00ff64;
+    }
+
+    /* Dropdown Header Styling */
+    .dropdown-header {
+        font-size: 24px;
+        margin: 20px 0;
+        color: #00ff64;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-transform: uppercase;
+        padding: 10px;
+        border: 1px solid #02973e;
+        border-radius: 5px;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    .dropdown-header:hover {
+        color: white;
+        background: #00ff64;
+    }
+
+    .dropdown-header::after {
+        content: '▼';
+        font-size: 18px;
+        transition: transform 0.3s;
+    }
+
+    .dropdown-header.active::after {
+        transform: rotate(180deg);
+    }
+
+    /* Dropdown Content Styling */
+    .dropdown-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease, opacity 0.5s ease;
+        opacity: 0;
+    }
+
+    .dropdown-content.active {
+        max-height: 300px;
+        opacity: 1;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #ccc;
+        padding: 0 15px;
+        margin: 10px 0;
+    }
+
+    /* Floating Animation */
+    .floating-circle {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #00ff64, transparent);
+        animation: float 6s infinite ease-in-out;
+        z-index: -1;
+    }
+    .floating-circle:nth-child(1) {
+        animation-delay: 0.5s;
+    }
+
+    .floating-circle:nth-child(2) {
+        animation-delay: 2s;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(0) translateX(0) scale(1);
+        }
+        50% {
+            transform: translateY(-20px) translateX(20px) scale(1.2);
+        }
+        100% {
+            transform: translateY(0) translateX(0) scale(1);
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        h1 {
+            font-size: 36px;
+        }
+        .dropdown-header {
+            font-size: 22px;
+        }
+        p {
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 32px;
+        }
+        .dropdown-header {
+            font-size: 20px;
+        }
+        p {
+            font-size: 13px;
+        }
+        .floating-circle {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 28px;
+        }
+        .dropdown-header {
+            font-size: 18px;
+        }
+        p {
+            font-size: 12px;
+        }
+        .floating-circle {
+            width: 50px;
+            height: 50px;
+        }
+    }
+    .img{
+            max-width: 50%;
+            max-height: 500px;
+        }
+</style>
+</head>
+<body>
+
+    <div class="preloader">
+        <div class="spinner-container">
+        <div class="spinner"></div>
+        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="Basket Icon">
+        </div>
+    </div>
+
+<!-- Floating Circles -->
+<div class="floating-circle"></div>
+<div class="floating-circle" style="color: gold;"></div>
+
+<!-- Privacy Policy Container -->
+<div class="container">
+    <h1>Privacy Policy</h1>
+    <div style="text-align: center;"><img src="back3.jpg" class="img"></div>
+
+    <div class="dropdown">
+        <div class="dropdown-header">Introduction</div>
+        <div class="dropdown-content">
+            <p>
+                Your privacy is important to us. This Privacy Policy outlines how we handle your information.
+            </p>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <div class="dropdown-header">Information We Collect</div>
+        <div class="dropdown-content">
+            <p>
+                We collect personal details like your name and email address to provide better services.
+            </p>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <div class="dropdown-header">How We Use Your Information</div>
+        <div class="dropdown-content">
+            <p>
+                We use your information to improve our services and respond to inquiries.
+            </p>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <div class="dropdown-header">Protecting Your Information</div>
+        <div class="dropdown-content">
+            <p>
+                We implement strong security measures to safeguard your data.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Hide preloader once page loads completely
+    window.onload = () => {
+        document.querySelector('.preloader').style.display = 'none';
+        };
+
+    // Dropdown toggle
+    document.querySelectorAll('.dropdown-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const content = header.nextElementSibling;
+            header.classList.toggle('active');
+            content.classList.toggle('active');
+        });
+    });
+</script>
+</body>
+</html>

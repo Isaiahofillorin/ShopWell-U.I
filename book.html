@@ -1,0 +1,315 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meat Booking Form</title>
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+        /* General Styling */
+        body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, rgb(37, 37, 37), rgb(75, 72, 72));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        /* Preloader Styling */
+        .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .spinner-container {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        }
+
+        .spinner-container img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        }
+
+        .spinner {
+        width: 100%;
+        height: 100%;
+        border: 5px solid #ccc;
+        border-top: 5px solid #ff758c;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+        }
+
+        /* Form Styling */
+        form {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 400px;
+        background: white;
+        padding: 20px 50px 20px 20px;
+        align-self: center;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease-in-out;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 10px 20px white;
+        }
+
+        form:hover {
+        transform: translateY(-10px);
+        }
+
+        label {
+        display: block;
+        margin: 10px 0 5px;
+        color: #555;
+        font-weight: bold;
+        }
+
+        input, select, textarea, button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        font-size: 1rem;
+        transition: all 0.3s ease-in-out;
+        }
+
+        input:hover, select:hover, textarea:hover {
+        background: #f9f9f9;
+        border-color: gold;
+        }
+
+        input:focus, select:focus, textarea:focus {
+        outline: none;
+        border-color: #ff758c;
+        box-shadow: 0 0 5px rgba(255, 117, 140, 0.5);
+        }
+
+        button {
+        background-color: green;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        transition: transform 0.2s ease-in-out;
+        }
+        button:hover {
+        transform: scale(1.1) rotate(-2deg);
+        opacity: 0.7;
+        }
+        button:active{
+        background-color: rgb(4, 66, 4);
+        }
+        #address-section {
+        display: none;
+        }
+        .bouncing {
+        opacity: 0; /* Initially hidden */
+        transform: translateY(50px); /* Move out of view */
+        transition: opacity 0.4s, transform 1s; /* Smooth entry */
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        }
+
+        /* Animation keyframes */
+        @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+            color: white;
+        }
+        40% {
+            transform: translateY(-10px);
+            color: #ffcc00;
+        }
+        60% {
+            transform: translateY(-30px);
+            color: rgb(4, 102, 4);
+        }
+    }
+        .bounce {
+        animation: bounce 1s ease infinite; /* Loop the bounce animation */
+        opacity: 1; /* Make visible */
+        transform: translateY(0); /* Reset initial position */
+        }
+
+        .img{
+            max-width: 50%;
+            max-height: 500px;
+        }
+        textarea{
+            width: 100%;
+        }
+    </style>
+    </head>
+    <body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner-container">
+        <div class="spinner"></div>
+        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="Basket Icon">
+        </div>
+    </div>
+
+    <!-- Form -->
+    <form id="meatBookingForm" style="background-image: url(back2.jpg);">
+        <h2 class="bouncing">Book Your Meat</h2>
+        <div style="text-align: center;"><img src="back3.jpg" class="img"></div>
+        <label for="phone" style="color: white;">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+        <label for="meatType" style="color: white;">Type of Meat:</label>
+        <select id="meatType" name="meatType" required>
+        <option value="">Select Meat</option>
+        <option value="Beef">Beef</option>
+        <option value="Chicken">Chicken</option>
+        <option value="Goat">Goat</option>
+        <option value="Fish">Fish</option>
+        </select>
+
+        <label for="kilos" style="color: white;">Amount (in Kilos):</label>
+        <input type="number" id="kilos" name="kilos" min="1" required>
+
+        <label for="delivery" style="color: white;">Delivery Preference:</label>
+        <select id="delivery" name="delivery" required>
+        <option value="" >Select Option</option>
+        <option value="Yes">Yes, deliver to my home</option>
+        <option value="No">No, I will come to meet</option>
+        </select>
+
+        <div id="address-section">
+        <label for="address" style="color: white;">Delivery Address:</label>
+        <textarea id="address" name="address" rows="4" placeholder="Enter your delivery address"></textarea>
+        </div>
+
+        <label for="meetingDate" id="meetingDateLabel" style="display: none; color: white;">Meeting Date:</label>
+        <input type="date" id="meetingDate" name="meetingDate" style="display: none;">
+
+        <label for="description" style="color: white;">Further Description:</label>
+        <textarea id="description" name="description" rows="10" placeholder="Describe any special requirements"></textarea>
+
+            <button type="submit" >Submit</button>
+    </form>
+
+    <script>
+        const delivery = document.getElementById("delivery");
+        const meetingDateLabel = document.getElementById("meetingDateLabel");
+        const meetingDate = document.getElementById("meetingDate");
+        const addressSection = document.getElementById("address-section");
+
+        // Show/hide sections based on delivery preference
+        delivery.addEventListener("change", () => {
+        if (delivery.value === "Yes") {
+            addressSection.style.display = "block";
+            meetingDateLabel.style.display = "none";
+            meetingDate.style.display = "none";
+            meetingDate.required = false;
+        } else if (delivery.value === "No") {
+            meetingDateLabel.style.display = "block";
+            meetingDate.style.display = "block";
+            meetingDate.required = true;
+            addressSection.style.display = "none";
+        } else {
+            addressSection.style.display = "none";
+            meetingDateLabel.style.display = "none";
+            meetingDate.style.display = "none";
+            meetingDate.required = false;
+        }
+        });
+        // Hide preloader once page loads completely
+        window.onload = () => {
+        document.querySelector('.preloader').style.display = 'none';
+        };
+
+
+            // bouncing Function to check if an element is in the viewport
+    function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+    }
+
+    // Add event listener to check scroll and trigger bounce when entering the viewport
+    window.addEventListener('scroll', () => {
+    const text = document.querySelector('.bouncing');
+    if (isInViewport(text)) {
+        text.classList.add('bounce'); // Add bounce animation
+    } else {
+        text.classList.remove('bounce'); // Remove bounce animation when out of view
+    }
+    });
+
+    // Trigger bounce immediately if already in view on page load
+    window.addEventListener('load', () => {
+    const text = document.querySelector('.bouncing');
+    if (isInViewport(text)) {
+        text.classList.add('bounce'); // Add bounce if it's already in view
+    }
+    });
+
+
+
+        // Handle form submission
+        document.getElementById("meatBookingForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const phone = document.getElementById("phone").value;
+        const meatType = document.getElementById("meatType").value;
+        const kilos = document.getElementById("kilos").value;
+        const deliveryPreference = delivery.value;
+        const address = document.getElementById("address").value;
+        const meetingDateValue = meetingDate.value;
+        const description = document.getElementById("description").value;
+
+        let emailBody = `Phone Number: ${phone}%0A`;
+        emailBody += `Type of Meat: ${meatType}%0A`;
+        emailBody += `Amount (Kilos): ${kilos}%0A`;
+        emailBody += `Delivery Preference: ${deliveryPreference}%0A`;
+
+        if (deliveryPreference === "Yes") {
+            emailBody += `Delivery Address: ${address}%0A`;
+        } else if (deliveryPreference === "No") {
+            emailBody += `Meeting Date: ${meetingDateValue}%0A`;
+        }
+
+        emailBody += `Further Description: ${description}%0A`;
+
+        // Send email using mailto
+        window.location.href = `mailto:akinrinaded7@gmail.com?subject=Meat Booking Request&body=${emailBody}`;
+        });
+    </script>
+    </body>
+    </html>
